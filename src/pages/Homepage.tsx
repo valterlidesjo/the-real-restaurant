@@ -1,4 +1,5 @@
 import React from "react";
+import pizza from "../assets/pizza-size.png";
 
 const Homepage = () => {
   return (
