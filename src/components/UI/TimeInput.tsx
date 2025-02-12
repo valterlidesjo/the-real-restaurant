@@ -26,7 +26,7 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
   return (
     <>
       <div className="w-full flex justify-center items-center">
-        <div className="w-4/5 border border-black border-solid mb-4">
+        <div className="w-full border border-black border-solid mb-4">
           <div
             className="flex flex-row justify-between items-center"
             onClick={handleClick}
