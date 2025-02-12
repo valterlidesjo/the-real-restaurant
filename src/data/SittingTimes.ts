@@ -1,0 +1,1 @@
+export const SittingTimes = ["18", "21"];
