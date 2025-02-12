@@ -1,13 +1,14 @@
 import { RouterProvider } from "react-router";
 import "./app.css";
 import { router } from "./Router";
-function App() {
+import "./styles/_global.scss";
 
+function App() {
   return (
     <>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
