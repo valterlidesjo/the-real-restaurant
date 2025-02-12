@@ -1,13 +1,12 @@
-
 import { FiPhone, FiMail } from "react-icons/fi";
-
+import ContactMap from "../components/ContactMap/ContactMap";
 
 const Contact = () => {
   return (
     <>
       <div className="w-full flex justify-center items-center flex-col p-8">
-        <div className="map test-cursor">
-          Karta pizza
+        <div className="map test-cursor my-5">
+          <ContactMap />
         </div>
         <p className="text-2xl mb-1">Fitzgerald Av. 5</p>
         <p className="text-2xl mb-8">Kingston, Jamaica</p>
