@@ -1,0 +1,1 @@
+export const GuestCount = ["1 Guest", "2 Guests", "3 Guests", "4 Guests", "5 Guests", "6 Guests"];
