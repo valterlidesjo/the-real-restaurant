@@ -11,7 +11,6 @@ const Reservation = () => {
     <>
       <section className="p-[2rem]">
         <ReservationText />
-
         <Button text="SEARCH BOOKING" />
         <TegelBooking />
       </section>
