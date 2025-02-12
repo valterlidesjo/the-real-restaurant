@@ -1,16 +1,42 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router"; // Korrekt import
+import "./scss/_navbar.scss";
 
 const Navbar = () => {
+  const location = useLocation(); // Flytta useLocation direkt in i komponenten
+
   return (
     <>
       <header>
-        <nav className="flex justify-center items-center flex-col w-dvw p-8 gap-4">
-          <p className="logo text-[3rem] font-bold">Terni.</p>
-          <div className="flex justify-evenly items-center w-full">
-            <NavLink to={"/"}>Home</NavLink>
-            <NavLink to={"/reservation"}>Make Reservation</NavLink>
-            <NavLink to={"/contact"}>Contact</NavLink>
+        <nav className="flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-2 ">
+          <p className="logo text-[3rem] font-bold text-center md:text-[4rem]">
+            Terni.
+          </p>
+          <div className="flex justify-between items-center w-full md:w-[80%] lg:w-[40%] ">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
+            >
+              <p className="text-[0.65rem] text-center w-[30%] sm:text-[1rem]">
+                Home
+              </p>
+            </NavLink>
+            <NavLink
+              to="/reservation"
+              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
+            >
+              <p className="text-[0.65em] text-center w-[30%] sm:text-[1rem]">
+                Reservation
+              </p>
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
+            >
+              <p className="text-[0.65rem] text-center w-[30%] sm:text-[1rem]">
+                Contact
+              </p>
+            </NavLink>
           </div>
         </nav>
       </header>
@@ -19,7 +45,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-//Slider funktionallitet
-// -> när man står över den navigeringen så har den en svart underline
-// ->  när en ny navlink väljs så slidar den över till vald navlink
