@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ReservationText from "../components/ReservationText";
 
 const Reservation = () => {
   return (
-    <div>Reservation</div>
-  )
-}
+    <>
+      <ReservationText />
+    </>
+  );
+};
 
-export default Reservation
+export default Reservation;
