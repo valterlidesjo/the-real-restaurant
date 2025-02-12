@@ -69,9 +69,7 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
                   className="text-sm mb-1 w-full"
                   onClick={() => handleSelect(m)}
                 >
-                    <p className="logo font-bold text-xl">
-                  {m}
-                    </p>
+                  <p className="logo font-bold text-xl">{m}</p>
                 </li>
               ))}
             </ul>
@@ -81,9 +79,5 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
     </>
   );
 };
-  );
-};
-
-export default TimeInput;
 
 export default TimeInput;
