@@ -1,1 +1,1 @@
-export const SittingTimes = ["18", "21"];
+export const SittingTimes = ["18.00", "21.00"];
