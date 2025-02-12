@@ -81,5 +81,9 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
     </>
   );
 };
+  );
+};
+
+export default TimeInput;
 
 export default TimeInput;
