@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router"; // Korrekt import
 import "./scss/_navbar.scss";
+import michelin from "../assets/michelin-guide-logo 2.png";
 
 const Navbar = () => {
   const location = useLocation(); // Flytta useLocation direkt in i komponenten
@@ -8,35 +9,48 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <nav className="flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-2 ">
-          <p className="logo text-[3rem] font-bold text-center md:text-[4rem]">
+        <nav className="flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4 ">
+          <p className="logo text-[3rem] font-bold text-center md:text-[4.5rem]">
             Terni.
           </p>
+          <img src={michelin} alt="" />
           <div className="flex justify-between items-center w-full md:w-[80%] lg:w-[40%] ">
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
-            >
-              <p className="text-[0.65rem] text-center w-[30%] sm:text-[1rem]">
+            <div className="w-[30%] flex justify-center items-center">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
+                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                }
+              >
                 Home
-              </p>
-            </NavLink>
-            <NavLink
-              to="/reservation"
-              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
-            >
-              <p className="text-[0.65em] text-center w-[30%] sm:text-[1rem]">
+              </NavLink>
+            </div>
+            <div className="w-[30%] flex justify-center items-center">
+              <NavLink
+                to="/reservation"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
+                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                }
+              >
                 Reservation
-              </p>
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => (isActive ? "active" : "")} // Använd isActive
-            >
-              <p className="text-[0.65rem] text-center w-[30%] sm:text-[1rem]">
+              </NavLink>
+            </div>
+            <div className="w-[30%] flex justify-center items-center">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive
+                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
+                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                }
+              >
                 Contact
-              </p>
-            </NavLink>
+              </NavLink>
+            </div>
           </div>
         </nav>
       </header>
@@ -45,3 +59,10 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+//Slider:
+//-> lägga till så att man mappar igenom
+//-> lägga till animation på slidern
+//-> fixa underlinen
+//-> fixa michelinbilden -> klar
+//-> fixa färgändring på navbar vid scroll
