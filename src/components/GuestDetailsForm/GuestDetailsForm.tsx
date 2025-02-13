@@ -46,7 +46,7 @@ const GuestDetailsForm: React.FC = () => {
   return (
     <form
       ref={formRef}
-      className="max-w-md mx-auto guest-detail-form my-5"
+      className="max-w-md mx-auto guest-detail-form my-5 p-4"
       noValidate
       onInput={handleInput}
       onSubmit={handleSubmit}

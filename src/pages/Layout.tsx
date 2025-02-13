@@ -1,7 +1,6 @@
 import { Outlet } from "react-router";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
-import GuestDetailsForm from "../components/GuestDetailsForm/GuestDetailsForm";
 
 const Layout = () => {
   return (
@@ -9,9 +8,7 @@ const Layout = () => {
       <Navbar />
       <main className="flex-grow max-w-[768px] mx-auto ">
         <Outlet />
-        <GuestDetailsForm />
       </main>
-
       <div className="flex-none">
         <Footer />
       </div>
