@@ -28,31 +28,28 @@ interface BookingProviderProps {
     children: ReactNode;
 }
 
+export const initialState: Booking = {
+    restaurantId: "",
+    date: "",
+    time: "",
+    numberOfGuests: 1,
+    customer: {
+      name: "",
+      lastname: "",
+      email: "",
+      phone: ""
+    }
+};
+
 export const BookingProvider = ({ children } : BookingProviderProps) => {
 
-    // useEffect(() => {
-        
-    // },[]);
-
-    const initialState: Booking = {
-        restaurantId: "",
-        date: "",
-        time: "",
-        numberOfGuests: 1,
-        customer: {
-          name: "",
-          lastname: "",
-          email: "",
-          phone: ""
-        }
-    };
 
     const [ booking, dispatch ] = useReducer(BookingReducer, initialState);
 
 
     return (
         <>
-        <BookingsContext.Provider value={{ booking, dispatch }} >
+        <BookingsContext.Provider value={{ booking, dispatch }}>
             {children}
         </BookingsContext.Provider>
         </>

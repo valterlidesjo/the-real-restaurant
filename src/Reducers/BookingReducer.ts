@@ -14,14 +14,11 @@ export enum ActionType {
 export const BookingReducer = (booking: Booking, action: IAction): Booking => {
   switch (action.type) {
     case ActionType.SET_GUESTS:
-      booking.numberOfGuests = +action.payload;
-      return booking;
+      return {...booking, numberOfGuests: +action.payload};
     case ActionType.SET_DATE:
-      booking.date = action.payload;
-      return booking;
+      return {...booking, date: action.payload};
     case ActionType.SET_TIME:
-      booking.time = action.payload;
-      return booking;
+      return {...booking, time: action.payload};
     default:
       return booking;
   }

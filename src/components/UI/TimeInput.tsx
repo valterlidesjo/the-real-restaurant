@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { ActionType, IAction } from "../../Reducers/BookingReducer";
 
 interface TimeInputProps {
   header: string;
   content: string[];
+  dispatch: React.Dispatch<IAction>;
+  type: ActionType;
 }
 
-const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
-  const isDatePicker = header.toLowerCase() === "date";
+const TimeInput: React.FC<TimeInputProps> = ({
+  header,
+  content,
+  dispatch,
+  type,
+}) => {
+  const isDatePicker = type === ActionType.SET_DATE;
   const today = new Date().toISOString().split("T")[0];
+  const guest = type === ActionType.SET_GUESTS;
 
   const [isOpen, setIsOpen] = useState(false);
   const [chosen, setChosen] = useState(
@@ -18,9 +27,15 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
   const handleClick = () => {
     if (!isDatePicker) setIsOpen((prev) => !prev);
   };
-  const handleSelect = (time: string) => {
-    setChosen(time);
+
+  const handleSelect = (value: string) => {
+    setChosen(value);
     setIsOpen(false);
+
+    dispatch({
+      type: type,
+      payload: value,
+    });
   };
 
   return (
@@ -37,11 +52,14 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
                 <input
                   type="date"
                   value={chosen}
-                  onChange={(e) => setChosen(e.target.value)}
+                  onChange={(e) => {
+                    setChosen(e.target.value);
+                    dispatch({ type, payload: e.target.value });
+                  }}
                   className="text-3xl outline-none logo font-bold"
                 />
               ) : (
-                <p className="text-xl logo font-bold">{chosen}</p>
+                <p className="text-xl logo font-bold">{guest ? `${chosen} Guests` : chosen}</p>
               )}
             </div>
             <div className="m-2" id="arrow-container">
@@ -69,7 +87,7 @@ const TimeInput: React.FC<TimeInputProps> = ({ header, content }) => {
                   className="text-sm mb-1 w-full"
                   onClick={() => handleSelect(m)}
                 >
-                  <p className="logo font-bold text-xl">{m}</p>
+                  <p className="logo font-bold text-xl">{guest ? `${m} Guests` : m}</p>
                 </li>
               ))}
             </ul>

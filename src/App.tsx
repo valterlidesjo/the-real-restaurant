@@ -2,11 +2,14 @@ import { RouterProvider } from "react-router";
 import "./app.css";
 import { router } from "./Router";
 import "./styles/_global.scss";
+import { BookingProvider } from "./Context/BookingsContext";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <BookingProvider>
+        <RouterProvider router={router} />
+      </BookingProvider>
     </>
   );
 }
