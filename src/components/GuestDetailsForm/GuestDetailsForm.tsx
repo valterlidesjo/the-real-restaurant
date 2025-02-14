@@ -32,12 +32,17 @@ const GuestDetailsForm: React.FC = () => {
       formRef.current.reset();
       setFormIsValid(false);
       setSuccessMessage("We look forward to having you!");
+
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
     }
   };
 
   return (
     <form
       ref={formRef}
+      method="post"
       className="max-w-md mx-auto guest-detail-form my-5 p-4"
       noValidate
       onInput={handleInput}
