@@ -1,23 +1,25 @@
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { ActionType, IAction } from "../../Reducers/BookingReducer";
+import { useBookingContext } from "../../Context/BookingsContext";
 
 interface TimeInputProps {
   header: string;
-  content: string[];
+  content?: string[];
   dispatch: React.Dispatch<IAction>;
   type: ActionType;
 }
 
 const TimeInput: React.FC<TimeInputProps> = ({
   header,
-  content,
+  content = [],
   dispatch,
   type,
 }) => {
   const isDatePicker = type === ActionType.SET_DATE;
   const today = new Date().toISOString().split("T")[0];
   const guest = type === ActionType.SET_GUESTS;
+  const { booking } = useBookingContext();
 
   const [isOpen, setIsOpen] = useState(false);
   const [chosen, setChosen] = useState(
@@ -36,6 +38,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
       type: type,
       payload: value,
     });
+    
   };
 
   return (

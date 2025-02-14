@@ -13,7 +13,7 @@ export const postData = async (test: Booking) => {
 export const fetchData = async (id: string) => {
   try {
     const response = await apiServices.get("/booking/restaurant/", id);
-    console.log(response);
+    return response;
   } catch (error) {
     console.log("TEST ERROR", error);
   }

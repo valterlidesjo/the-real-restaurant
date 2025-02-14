@@ -1,6 +1,7 @@
 import { createContext, Dispatch, ReactNode, useContext, useEffect, useReducer } from "react";
 import { Booking } from "../models/Booking";
 import { BookingReducer, IAction } from "../Reducers/BookingReducer";
+import { id } from "../components/SearchBookingResults";
 
 
 interface BookingsContextProps {
@@ -8,31 +9,13 @@ interface BookingsContextProps {
     dispatch: Dispatch<IAction>
 }
 
-export const BookingsContext = createContext<BookingsContextProps>({
-    booking: {
-        restaurantId: "",
-        date: "",
-        time: "",
-        numberOfGuests: 1,
-        customer: {
-          name: "",
-          lastname: "",
-          email: "",
-          phone: ""
-        }
-    },
-    dispatch: () => {}
-});
-
-interface BookingProviderProps {
-    children: ReactNode;
-}
+const today = new Date().toISOString().split("T")[0];
 
 export const initialState: Booking = {
-    restaurantId: "",
-    date: "",
-    time: "",
-    numberOfGuests: 1,
+    restaurantId: id,
+    date: today,
+    time: "18.00",
+    numberOfGuests: 2,
     customer: {
       name: "",
       lastname: "",
@@ -40,6 +23,16 @@ export const initialState: Booking = {
       phone: ""
     }
 };
+
+export const BookingsContext = createContext<BookingsContextProps>({
+    booking: initialState,
+    dispatch: () => {}
+});
+
+interface BookingProviderProps {
+    children: ReactNode;
+}
+
 
 export const BookingProvider = ({ children } : BookingProviderProps) => {
 
