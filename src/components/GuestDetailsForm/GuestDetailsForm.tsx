@@ -4,13 +4,11 @@ import "./GuestDetailsForm.scss";
 const GuestDetailsForm: React.FC = () => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [showForm, setShowForm] = useState(true);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleInput = () => {
     if (formRef.current) {
       setFormIsValid(formRef.current.checkValidity());
-
       if (successMessage) {
         setSuccessMessage("");
       }
@@ -34,14 +32,8 @@ const GuestDetailsForm: React.FC = () => {
       formRef.current.reset();
       setFormIsValid(false);
       setSuccessMessage("We look forward to having you!");
-
-      setTimeout(() => {
-        setShowForm(false);
-      }, 5000);
     }
   };
-
-  if (!showForm) return null;
 
   return (
     <form
