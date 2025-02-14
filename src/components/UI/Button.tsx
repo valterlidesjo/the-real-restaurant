@@ -2,12 +2,16 @@ import React from "react";
 
 interface ButtonProps {
   text: string;
+  onClick?: () => void;
 }
 
-const Button = ({ text }: ButtonProps) => {
+const Button = ({ text, onClick }: ButtonProps) => {
   return (
     <>
-      <button className="logo text-[white] font-bold w-full bg-[#761D09] p-[1rem] ">
+      <button
+        onClick={onClick}
+        className="logo text-[white] font-bold w-full bg-[#761D09] p-[1rem] "
+      >
         {text}
       </button>
     </>
