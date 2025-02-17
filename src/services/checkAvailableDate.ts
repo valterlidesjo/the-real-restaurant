@@ -1,50 +1,54 @@
 import { id } from "../components/SearchBookingResults";
-import { useBookingContext } from "../Context/BookingsContext";
 import { Booking } from "../models/Booking";
 import { fetchData } from "./bookingServices";
 
-interface checkAvailableDateProps {
+interface CheckAvailableDateProps {
   booking: Booking;
-  numberOfDays?: number
+  numberOfDays?: number;
 }
 
 export const checkAvailableDate = async ({
   booking,
-  numberOfDays = 3
-}: checkAvailableDateProps) => {
-    
-    
-
-
+  numberOfDays = 3,
+}: CheckAvailableDateProps) => {
   const result: Booking[] = await fetchData(id);
 
-  const searchedDate = booking.date;
+  const searchedDate = new Date(booking.date);
 
+  const endDate = new Date(searchedDate);
+  endDate.setDate(searchedDate.getDate() + numberOfDays);
 
-
-
-  const bookingsOnDate = result.filter((b) => b.date === searchedDate);
-
-  if (bookingsOnDate.length >= 30) {
-    console.log("Det är fullt på denna dag!");
-    return 1;
-  } 
-
-  const sitting18 = bookingsOnDate.filter((b) => b.time === "18:00").length;
-  const sitting21 = bookingsOnDate.filter((b) => b.time === "21:00").length;
-
-  if (sitting18 >= 15) {
-    console.log("Sittningen kl. 18:00 är full!");
-    return 2;
-  } else {
-    console.log("LEDIGT 18:00 BROR");
+  const allDates: string[] = [];
+  for (let d = new Date(searchedDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+    allDates.push(d.toISOString().split("T")[0]); // Omvandla till "YYYY-MM-DD"
   }
 
-  if (sitting21 >= 15) {
-    console.log("Sittningen kl. 21:00 är full!");
-    return 3;
-  } else {
-    console.log("LEDIGT 21:00 BROR");
-  }
-  return 4;
+  const bookingsInRange = result.filter((b) => {
+    const bookingDate = new Date(b.date);
+    return bookingDate >= searchedDate && bookingDate <= endDate;
+  });
+
+  const dateAvailability: Record<string, { total: number; sitting18: number; sitting21: number }> = {};
+
+  bookingsInRange.forEach((b) => {
+    if (!dateAvailability[b.date]) {
+      dateAvailability[b.date] = { total: 0, sitting18: 0, sitting21: 0 };
+    }
+    dateAvailability[b.date].total += 1;
+    if (b.time === "18:00") dateAvailability[b.date].sitting18 += 1;
+    if (b.time === "21:00") dateAvailability[b.date].sitting21 += 1;
+  });
+
+
+  const availabilityReport = allDates.map((date) => {
+    const stats = dateAvailability[date] || { total: 0, sitting18: 0, sitting21: 0 };
+    return {
+      date,
+      isFull: stats.total >= 30,
+      is18Full: stats.sitting18 >= 15,
+      is21Full: stats.sitting21 >= 15,
+    };
+  });
+
+  return availabilityReport;
 };

@@ -10,7 +10,7 @@ const Button = ({ text, onClick }: ButtonProps) => {
     <>
       <button
         onClick={onClick}
-        className="logo text-[white] font-bold w-full bg-[#761D09] p-[1rem] "
+        className="logo text-[white] font-bold w-full bg-[#780111] p-[1rem] "
       >
         {text}
       </button>
