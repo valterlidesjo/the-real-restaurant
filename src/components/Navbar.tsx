@@ -23,8 +23,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header>
-        <nav className={`flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4" ${isScrolled ? "bg-[#ECE5D6] shadow-lg" : ""}`}>
+    <div className="w-full h-32 md:h-44"></div>
+      <header className="fixed z-50">
+        <nav
+          className={`flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4 transition-colors duration-300 ease-in-out" ${
+            isScrolled ? "bg-[#ECE5D6] shadow-lg" : ""
+          }`}
+        >
           <p className="logo text-[3rem] font-bold text-center md:text-[4.5rem]">
             Terni.
           </p>
