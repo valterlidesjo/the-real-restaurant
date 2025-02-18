@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="w-full h-32 md:h-44"></div>
+      <div className="w-full h-32 md:h-50"></div>
       <header className="fixed z-50">
         <nav
           className={`flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4 transition-colors duration-300 ease-in-out" ${

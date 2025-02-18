@@ -5,7 +5,7 @@ import { ActionType, IAction } from "../../Reducers/BookingReducer";
 interface TimeInputProps {
   header: string;
   content?: string[];
-  className?: string,
+  className?: string;
   dispatch: React.Dispatch<IAction>;
   type: ActionType;
 }
@@ -33,7 +33,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
   const handleSelect = (value: string) => {
     setChosen(value);
     setIsOpen(false);
-  
+
     switch (type) {
       case ActionType.SET_DATE:
       case ActionType.SET_GUESTS:
@@ -48,12 +48,13 @@ const TimeInput: React.FC<TimeInputProps> = ({
         console.error("Unknown action type:", type);
     }
   };
-  
 
   return (
     <>
       <div className="w-full flex justify-center items-center relative">
-        <div className={`w-full h-8 min-h-[3rem] border border-black border-solid ${className}`}>
+        <div
+          className={`w-full h-15 min-h-[3rem] border border-black border-solid ${className}`}
+        >
           <div
             className="flex flex-row justify-between items-center"
             onClick={handleClick}
@@ -71,7 +72,9 @@ const TimeInput: React.FC<TimeInputProps> = ({
                   className="h-8 w-full text-xl outline-none logo font-bold appearance-none"
                 />
               ) : (
-                <p className="text-xl logo font-bold">{guest ? `${chosen} Guests` : chosen}</p>
+                <p className="text-xl logo font-bold">
+                  {guest ? `${chosen} Guests` : chosen}
+                </p>
               )}
             </div>
             <div className="m-2" id="arrow-container">
@@ -86,20 +89,22 @@ const TimeInput: React.FC<TimeInputProps> = ({
           </div>
 
           {isOpen && !isDatePicker && (
-          <div className="absolute left-0 w-full bg-white border border-black mt-1 z-10">
-            <ul className="w-full">
-              {content.map((m, index) => (
-                <li
-                  key={index}
-                  className="text-sm p-2 hover:bg-gray-200 cursor-pointer"
-                  onClick={() => handleSelect(m)}
-                >
-                  <p className="logo font-bold text-xl">{guest ? `${m} Guests` : m}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+            <div className="absolute left-0 w-full bg-white border border-black mt-1 z-10">
+              <ul className="w-full">
+                {content.map((m, index) => (
+                  <li
+                    key={index}
+                    className="text-sm p-2 hover:bg-gray-200 cursor-pointer"
+                    onClick={() => handleSelect(m)}
+                  >
+                    <p className="logo font-bold text-xl">
+                      {guest ? `${m} Guests` : m}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -8,7 +8,6 @@ import { checkAvailableDate } from "../services/checkAvailableDate";
 import Button from "./UI/Button";
 import TimeInput from "./UI/TimeInput";
 
-
 const SearchComponent = () => {
   const { booking, dispatch } = useBookingContext();
   const navigate = useNavigate();
@@ -26,23 +25,28 @@ const SearchComponent = () => {
 
   return (
     <>
-    <div className="w-full p-8 md:flex justify-center items-stretch">
-      <TimeInput
-        dispatch={dispatch}
-        type={ActionType.SET_GUESTS}
-        header="Guests"
-        content={GuestCount}
-        className="mb-4 md:m-0"
-      />
-      <TimeInput dispatch={dispatch} type={ActionType.SET_DATE} header="Date" className="mb-4 md:m-0" />
-      <TimeInput
-        dispatch={dispatch}
-        type={ActionType.SET_TIME}
-        header="Time"
-        content={SittingTimes}
-        className="mb-4 md:m-0"
-      />
-      <Button onClick={handleSearch} text="SEARCH BOOKING" />
+      <div className="w-full md:flex justify-center items-stretch">
+        <TimeInput
+          dispatch={dispatch}
+          type={ActionType.SET_GUESTS}
+          header="Guests"
+          content={GuestCount}
+          className="mb-4 md:m-0"
+        />
+        <TimeInput
+          dispatch={dispatch}
+          type={ActionType.SET_DATE}
+          header="Date"
+          className="mb-4 md:m-0"
+        />
+        <TimeInput
+          dispatch={dispatch}
+          type={ActionType.SET_TIME}
+          header="Time"
+          content={SittingTimes}
+          className="mb-4 md:m-0"
+        />
+        <Button onClick={handleSearch} text="SEARCH BOOKING" />
       </div>
     </>
   );
