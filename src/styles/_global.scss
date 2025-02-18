@@ -1,8 +1,13 @@
 * {
-    font-family: "Geist Mono";
-    cursor: url("../../public/real-pizza-slice.png") 16 16, pointer;
+  font-family: "Geist Mono";
+  cursor: url("../../public/real-pizza-slice.png") 16 16, pointer;
 }
 
 .logo {
-    font-family: "Caveat";
+  font-family: "Caveat";
+}
+
+.dark-red,
+.border-dark-red {
+  color: #761d09;
 }
