@@ -4,7 +4,7 @@ import {
   GoogleMap as GoogleMapComponent,
 } from "@react-google-maps/api";
 
-const containerStyle: React.CSSProperties = { width: "768px", height: "560px" };
+const containerStyle: React.CSSProperties = { width: "100%", height: "100%" }; //768x560
 const center = { lat: 17.992048438139683, lng: -76.81149734949142 };
 
 const ContactMap: React.FC = () => {
@@ -33,6 +33,7 @@ const ContactMap: React.FC = () => {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
+    <div className="max-w-[768px] max-h-[50vh] w-[80vw] h-[50vh] sm:aspect-[4/3] sm:h-auto">
     <GoogleMapComponent
       onLoad={onMapLoad}
       mapContainerStyle={containerStyle}
@@ -40,6 +41,7 @@ const ContactMap: React.FC = () => {
       zoom={17}
       options={{ gestureHandling: "greedy", disableDefaultUI: true }}
     />
+    </div>
   );
 };
 
