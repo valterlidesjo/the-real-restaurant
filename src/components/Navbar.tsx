@@ -44,7 +44,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Home
+                HOME
               </NavLink>
             </div>
             <div className="w-[30%] flex justify-center items-center">
@@ -56,7 +56,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Reservation
+                RESERVATION
               </NavLink>
             </div>
             <div className="w-[30%] flex justify-center items-center">
@@ -68,7 +68,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Contact
+                CONTACT
               </NavLink>
             </div>
           </div>

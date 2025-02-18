@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { ActionType, IAction } from "../../Reducers/BookingReducer";
-import { useBookingContext } from "../../Context/BookingsContext";
 
 interface TimeInputProps {
   header: string;
   content?: string[];
+  className?: string,
   dispatch: React.Dispatch<IAction>;
   type: ActionType;
 }
 
 const TimeInput: React.FC<TimeInputProps> = ({
   header,
+  className,
   content = [],
   dispatch,
   type,
@@ -19,7 +20,6 @@ const TimeInput: React.FC<TimeInputProps> = ({
   const isDatePicker = type === ActionType.SET_DATE;
   const today = new Date().toISOString().split("T")[0];
   const guest = type === ActionType.SET_GUESTS;
-  const { booking } = useBookingContext();
 
   const [isOpen, setIsOpen] = useState(false);
   const [chosen, setChosen] = useState(
@@ -33,18 +33,27 @@ const TimeInput: React.FC<TimeInputProps> = ({
   const handleSelect = (value: string) => {
     setChosen(value);
     setIsOpen(false);
+  
+    switch (type) {
+      case ActionType.SET_DATE:
+      case ActionType.SET_GUESTS:
+      case ActionType.SET_TIME:
+        dispatch({
+          type,
+          payload: value,
+        });
+        break;
 
-    dispatch({
-      type: type,
-      payload: value,
-    });
-    
+      default:
+        console.error("Unknown action type:", type);
+    }
   };
+  
 
   return (
     <>
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full border border-black border-solid mb-4">
+      <div className="w-full flex justify-center items-center relative">
+        <div className={`w-full min-h-[3rem] border border-black border-solid ${className}`}>
           <div
             className="flex flex-row justify-between items-center"
             onClick={handleClick}
@@ -59,7 +68,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
                     setChosen(e.target.value);
                     dispatch({ type, payload: e.target.value });
                   }}
-                  className="text-3xl outline-none logo font-bold"
+                  className="h-full w-full text-xl outline-none logo font-bold appearance-none"
                 />
               ) : (
                 <p className="text-xl logo font-bold">{guest ? `${chosen} Guests` : chosen}</p>
@@ -76,18 +85,13 @@ const TimeInput: React.FC<TimeInputProps> = ({
             </div>
           </div>
 
-          <div
-            className={
-              isOpen && !isDatePicker
-                ? "h-auto flex flex-col justify-center items-start pl-2 ml-2"
-                : "hidden"
-            }
-          >
+          {isOpen && !isDatePicker && (
+          <div className="absolute left-0 w-full bg-white border border-black mt-1 z-10">
             <ul className="w-full">
               {content.map((m, index) => (
                 <li
                   key={index}
-                  className="text-sm mb-1 w-full"
+                  className="text-sm p-2 hover:bg-gray-200 cursor-pointer"
                   onClick={() => handleSelect(m)}
                 >
                   <p className="logo font-bold text-xl">{guest ? `${m} Guests` : m}</p>
@@ -95,6 +99,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
               ))}
             </ul>
           </div>
+        )}
         </div>
       </div>
     </>
