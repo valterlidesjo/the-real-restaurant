@@ -12,11 +12,14 @@ const TextSection = ({ header, text, link, linkText }: TextSectionProps) => {
   return (
     <>
       <div className="flex flex-col gap-3">
-        <p className="text-3xl font-bold ">{header}</p>
-        <Link to={`/${link}`} className="text-[1.25rem] underline">
+        <p className="text-3xl font-bold md:text-5xl">{header}</p>
+        <Link
+          to={`/${link}`}
+          className="text-[1.25rem] font-semibold underline md:text-2xl"
+        >
           {linkText}
         </Link>
-        <p>{text}</p>
+        <p className="md:text-[1.25rem]">{text}</p>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-cream p-8 mt-8">
+    <footer className="w-full bg-cream p-8 mt-32">
       <div className="text-center mb-2">
         <h2 className="text-2xl logo text-[3rem] font-bold md:text-[4rem]">
           {contact.name}

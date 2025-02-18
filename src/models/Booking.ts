@@ -1,3 +1,5 @@
+import { DateResponse } from "./DateResponse"
+
 export interface Booking {
         restaurantId: string,
         date: string,
@@ -8,5 +10,6 @@ export interface Booking {
           lastname: string,
           email: string,
           phone: string
-        }
+        },
+        searchResults: DateResponse[];
 };

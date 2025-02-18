@@ -1,0 +1,80 @@
+
+@keyframes scroll-horizontal {
+    0%{
+        left: 0%;
+    }
+    100%{
+        left: -100%;
+    }
+}
+@keyframes scroll-horizontal-sec {
+    0%{
+        left: 100%;
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+.scroll-container-slider{
+    height: 2rem;
+    position: relative;
+    overflow: hidden;
+    // background: v.$secondary-col;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE och Edge
+
+    &::-webkit-scrollbar {
+        display: none; // Chrome, Safari och nya Edge
+    }
+    .carousel-primary{
+        top: 5%;
+        left: 0%;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+    }
+    .carousel-secondary{
+        top: 5%;
+        left: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+    }
+    .carousel-primary{
+        display: flex; 
+        justify-content: space-around;
+        align-items: center;
+        animation: scroll-horizontal 20s linear infinite;
+    }
+    .carousel-secondary{
+        animation: scroll-horizontal-sec 20s linear infinite;
+    }
+
+    .carousel-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+}
+
+.carousel-primary:hover,
+.carousel-primary:hover~.carousel-secondary{
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+.carousel-secondary:hover{
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
+.scroll-container-slider:hover>.carousel-primary:not(:hover){
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+}
