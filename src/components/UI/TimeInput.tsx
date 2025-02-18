@@ -53,7 +53,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
   return (
     <>
       <div className="w-full flex justify-center items-center relative">
-        <div className={`w-full min-h-[3rem] border border-black border-solid ${className}`}>
+        <div className={`w-full h-8 min-h-[3rem] border border-black border-solid ${className}`}>
           <div
             className="flex flex-row justify-between items-center"
             onClick={handleClick}
@@ -68,7 +68,7 @@ const TimeInput: React.FC<TimeInputProps> = ({
                     setChosen(e.target.value);
                     dispatch({ type, payload: e.target.value });
                   }}
-                  className="h-full w-full text-xl outline-none logo font-bold appearance-none"
+                  className="h-8 w-full text-xl outline-none logo font-bold appearance-none"
                 />
               ) : (
                 <p className="text-xl logo font-bold">{guest ? `${chosen} Guests` : chosen}</p>
