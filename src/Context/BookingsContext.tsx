@@ -16,6 +16,7 @@ export const initialState: Booking = {
     date: today,
     time: "18.00",
     numberOfGuests: 2,
+    searchResults: [],
     customer: {
       name: "",
       lastname: "",

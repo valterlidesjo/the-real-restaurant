@@ -1,5 +1,6 @@
-import { useBookingContext } from "../Context/BookingsContext";
+import { useState } from "react";
 import { DateResponse } from "../models/DateResponse";
+import Button from "./UI/Button";
 
 export const id = "67ac975e21ba0a444fe1f5a8";
 
@@ -10,7 +11,11 @@ interface SearchBookingResultsProps {
 const SearchBookingResults = ({
   searchedDatesData,
 }: SearchBookingResultsProps) => {
-  // const { booking } = useBookingContext();
+  const [selectedTime, setSelectedTime] = useState<{ date: string; time: string } | null>(null);
+
+const handleChosen = (date: string, time: string) => {
+  setSelectedTime({ date, time });
+};
 
   return (
     <>
@@ -29,7 +34,6 @@ const SearchBookingResults = ({
         const dayOfWeek = new Date(s.date)
         .toLocaleDateString("en-US", { weekday: "long" });
 
-      // Capitalize the first letter (just in case)
       const formattedDay = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
         return (
           <div className="flex justify-center items-start w-full flex-col" key={i}>
@@ -41,7 +45,8 @@ const SearchBookingResults = ({
                 </>
               ) : (
                 <>
-                  <button className="p-4 bg-[#780111] w-full text-white font-bold">18.00</button>
+                  <button className={`p-4 w-full text-white font-bold transition-all 
+                  ${selectedTime?.date === s.date && selectedTime?.time === "18.00" ? "bg-red-600" : "bg-[#780111]"}`} onClick={() => handleChosen(s.date, "18.00")}>18.00</button>
                 </>
               )}
               {s.is21Full ? (
@@ -50,13 +55,17 @@ const SearchBookingResults = ({
                 </>
               ) : (
                 <>
-                  <button className="p-4 bg-[#780111] w-full text-white font-bold">21.00</button>
+                  <button className={`p-4 w-full text-white font-bold transition-all 
+                  ${selectedTime?.date === s.date && selectedTime?.time === "21.00" ? "bg-red-600" : "bg-[#780111]"}`} onClick={() => handleChosen(s.date, "21.00")}>21.00</button>
                 </>
               )}
             </div>
           </div>
         )
       })}
+      </div>
+      <div className="w-full flex justify-center items-center mt-12">
+        <Button text="CONTINUE WITH CHOSEN TIME"/>
       </div>
     </>
   );

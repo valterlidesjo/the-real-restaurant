@@ -1,15 +1,35 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router"; // Korrekt import
+import { NavLink } from "react-router";
 import "./scss/_navbar.scss";
 import michelin from "../assets/michelin-guide-logo 2.png";
+import { useEffect, useState } from "react";
+import { throttle } from "lodash";
 
 const Navbar = () => {
-  const location = useLocation(); // Flytta useLocation direkt in i komponenten
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = throttle(() => {
+      const scrollTop = window.scrollY;
+      const threshold = 0;
+      setIsScrolled(scrollTop > threshold);
+    }, 200);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location.pathname]);
 
   return (
     <>
-      <header>
-        <nav className="flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4 ">
+    <div className="w-full h-32 md:h-44"></div>
+      <header className="fixed z-50">
+        <nav
+          className={`flex justify-center items-center flex-col w-dvw p-[1rem_2rem_2rem_2rem] gap-4 transition-colors duration-300 ease-in-out" ${
+            isScrolled ? "bg-[#ECE5D6] shadow-lg" : ""
+          }`}
+        >
           <p className="logo text-[3rem] font-bold text-center md:text-[4.5rem]">
             Terni.
           </p>
@@ -24,7 +44,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Home
+                HOME
               </NavLink>
             </div>
             <div className="w-[30%] flex justify-center items-center">
@@ -36,7 +56,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Reservation
+                RESERVATION
               </NavLink>
             </div>
             <div className="w-[30%] flex justify-center items-center">
@@ -48,7 +68,7 @@ const Navbar = () => {
                     : "text-[0.65rem] text-center sm:text-[1rem]"
                 }
               >
-                Contact
+                CONTACT
               </NavLink>
             </div>
           </div>
