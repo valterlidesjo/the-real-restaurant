@@ -11,5 +11,5 @@ export interface Booking {
           email: string,
           phone: string
         },
-        searchResults: DateResponse[];
+        searchResults?: DateResponse[];
 };

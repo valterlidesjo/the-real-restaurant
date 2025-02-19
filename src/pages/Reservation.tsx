@@ -1,18 +1,34 @@
-import React from "react";
 import ReservationText from "../components/ReservationText";
-import Button from "../components/UI/Button";
 import TegelBooking from "../components/UI/TegelBooking";
-import TimeInput from "../components/UI/TimeInput";
-import { GuestCount } from "../data/GuestCount";
-import { SittingTimes } from "../data/SittingTimes";
-import SearchBooking from "../components/SearchBooking";
+import GuestDetailsForm from "../components/GuestDetailsForm/GuestDetailsForm";
+import { useState } from "react";
+import SearchComponent from "../components/SearchComponent";
+import SearchBookingResults from "../components/SearchBookingResults";
+import { useBookingContext } from "../Context/BookingsContext";
 
 const Reservation = () => {
+  const [selectedTime, setSelectedTime] = useState<{
+    date: string;
+    time: string;
+  } | null>(null);
+  const { booking } = useBookingContext();
+
   return (
     <>
       <section className="p-[2rem]">
         <ReservationText />
-        <SearchBooking />
+        {!selectedTime && (
+          <>
+            <SearchComponent />
+            {booking.searchResults && booking.searchResults.length > 0 && (
+              <SearchBookingResults
+                setSelectedTime={setSelectedTime}
+                searchedDatesData={booking.searchResults || []}
+              />
+            )}
+          </>
+        )}
+        {selectedTime && <GuestDetailsForm onBack={() => setSelectedTime(null)} />}
         <TegelBooking />
       </section>
     </>

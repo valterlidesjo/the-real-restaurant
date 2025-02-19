@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import { DateResponse } from "../models/DateResponse";
 import Button from "./UI/Button";
+import { ActionType, IAction } from "../Reducers/BookingReducer";
+import { useBookingContext } from "../Context/BookingsContext";
 
 export const id = "67ac975e21ba0a444fe1f5a8";
 
 interface SearchBookingResultsProps {
   searchedDatesData: DateResponse[];
+  setSelectedTime: (time: { date: string; time: string } | null) => void;
+  dispatch: Dispatch<IAction>;
 }
 
 const SearchBookingResults = ({
   searchedDatesData,
+  setSelectedTime
 }: SearchBookingResultsProps) => {
-  const [selectedTime, setSelectedTime] = useState<{ date: string; time: string } | null>(null);
+  const [selectedTime, setLocalSelectedTime] = useState<{ date: string; time: string } | null>(null);
+    const { booking, dispatch } = useBookingContext();
+  
 
 const handleChosen = (date: string, time: string) => {
-  setSelectedTime({ date, time });
+  setLocalSelectedTime({ date, time });
+  dispatch({ type: ActionType.SET_DATE, payload: date });
+  dispatch({ type: ActionType.SET_TIME, payload: time });
+};
+
+const handleContinue = () => {
+  if (selectedTime) {
+    setSelectedTime(selectedTime); // Update parent state
+  }
 };
 
   return (
@@ -65,7 +80,7 @@ const handleChosen = (date: string, time: string) => {
       })}
       </div>
       <div className="w-full flex justify-center items-center mt-12">
-        <Button text="CONTINUE WITH CHOSEN TIME"/>
+        <Button text="CONTINUE WITH CHOSEN TIME" onClick={handleContinue}/>
       </div>
     </>
   );
