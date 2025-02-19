@@ -24,8 +24,7 @@ const HomePageMobile = () => {
       <div className="flex flex-col p-8 gap-8">
         <TextSection
           header="OUR MENU"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          text="Indulge in a refined culinary experience where classic Italian flavors meet exquisite craftsmanship. From delicate antipasti to handcrafted pasta and artisanal pizzas, our menu is designed to delight the senses with every bite."
           link=""
           linkText="Find out more"
         />
@@ -38,8 +37,7 @@ const HomePageMobile = () => {
         />
         <TextSection
           header="EAT GOOD LIVE GOOD"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          text="Great food is at the heart of a well-lived life, bringing people together over moments of joy and indulgence. With the finest ingredients and timeless flavors, we craft dishes that turn every meal into an experience worth savoring."
         />
         <img src={pizza} alt="" className="object-cover h-[300px]" />
       </div>

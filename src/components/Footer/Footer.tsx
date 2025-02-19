@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { contact } from "../../data/ContactInfo";
 import "./Footer.scss";
 
@@ -12,17 +13,17 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-around items-center mt-5 links w-full md:w-1/2 mx-auto">
-        <a href="/" className="font-bold uppercase text-sm">
+        <Link to={"/"} className="font-bold uppercase text-sm">
           Home
-        </a>
+        </Link>
         <span className="block sm:hidden">&#x2022;</span>
-        <a href="/reservation" className="font-bold uppercase text-sm">
+        <Link to={"/reservation"} className="font-bold uppercase text-sm">
           Reservation
-        </a>
+        </Link>
         <span className="block sm:hidden">&#x2022;</span>
-        <a href="/contact" className="font-bold uppercase text-sm">
+        <Link to={"/contact"} className="font-bold uppercase text-sm">
           Contact
-        </a>
+        </Link>
       </div>
       <p className="small text-center mt-7">
         © 2025 Terni. All rights reserved.
