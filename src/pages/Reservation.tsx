@@ -30,6 +30,9 @@ const Reservation = () => {
         )}
         {selectedTime && <GuestDetailsForm onBack={() => setSelectedTime(null)} />}
         <TegelBooking />
+        <div className="flex justify-center items-center w-full h-20">
+          <p className="text-[0.6rem]">We value your privacy and handle your personal information with the utmost care, following GDPR guidelines to ensure your data is protected and used responsibly.</p>
+        </div>
       </section>
     </>
   );

@@ -9,7 +9,6 @@ export const id = "67ac975e21ba0a444fe1f5a8";
 interface SearchBookingResultsProps {
   searchedDatesData: DateResponse[];
   setSelectedTime: (time: { date: string; time: string } | null) => void;
-  dispatch: Dispatch<IAction>;
 }
 
 const SearchBookingResults = ({
