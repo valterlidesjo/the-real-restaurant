@@ -12,16 +12,16 @@ const Footer = () => {
         <p className="pb-4 italic">{contact.location}</p>
       </div>
 
-      <div className="flex justify-around items-center mt-5 links w-full md:w-1/2 mx-auto">
-        <Link to={"/"} className="font-bold uppercase text-sm">
+      <div className="flex justify-between items-center mt-5 links w-full md:w-[80%] lg:w-[40%] mx-auto">
+        <Link to={"/"} className="font-bold uppercase text-sm w-[30%] flex justify-center items-center sm:text-[1rem]">
           Home
         </Link>
-        <span className="block sm:hidden">&#x2022;</span>
-        <Link to={"/reservation"} className="font-bold uppercase text-sm">
+        <span className="block">&#x2022;</span>
+        <Link to={"/reservation"} className="font-bold uppercase text-sm w-[30%] flex justify-center items-center sm:text-[1rem]">
           Reservation
         </Link>
-        <span className="block sm:hidden">&#x2022;</span>
-        <Link to={"/contact"} className="font-bold uppercase text-sm">
+        <span className="block">&#x2022;</span>
+        <Link to={"/contact"} className="font-bold uppercase text-sm w-[30%] flex justify-center items-center sm:text-[1rem]">
           Contact
         </Link>
       </div>

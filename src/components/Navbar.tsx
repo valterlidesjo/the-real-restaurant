@@ -40,8 +40,8 @@ const Navbar = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
-                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                    ? "active text-sm text-center sm:text-[1rem] font-bold transition-all duration-300"
+                    : "text-sm text-center sm:text-[1rem] hover:font-bold transition-[font-weight] duration-300"
                 }
               >
                 HOME
@@ -52,8 +52,8 @@ const Navbar = () => {
                 to="/reservation"
                 className={({ isActive }) =>
                   isActive
-                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
-                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                    ? "active text-sm text-center sm:text-[1rem] font-bold transition-all duration-300"
+                    : "text-sm text-center sm:text-[1rem] hover:font-bold transition-[font-weight] duration-300"
                 }
               >
                 RESERVATION
@@ -64,8 +64,8 @@ const Navbar = () => {
                 to="/contact"
                 className={({ isActive }) =>
                   isActive
-                    ? "active text-[0.65rem] text-center sm:text-[1rem]"
-                    : "text-[0.65rem] text-center sm:text-[1rem]"
+                    ? "active text-sm text-center sm:text-[1rem] font-bold transition-all duration-300"
+                    : "text-sm text-center sm:text-[1rem] hover:font-bold transition-[font-weight] duration-300"
                 }
               >
                 CONTACT
