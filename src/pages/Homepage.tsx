@@ -1,5 +1,3 @@
-import React from "react";
-
 import useIsDesktop from "../functions/UseIsDesktop";
 import HomePageDesktop from "../components/HomePageDesktop";
 import HomePageMobile from "../components/HomePageMobile";
