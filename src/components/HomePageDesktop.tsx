@@ -39,7 +39,7 @@ const HomePageDesktop = () => {
           <div className="flex flex-col w-[50%] gap-8">
             <video
               src={Video}
-              controls
+              no-controls
               autoPlay
               loop
               muted

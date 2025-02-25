@@ -26,7 +26,7 @@ const HomePageMobile = () => {
           />
           <video
             src={Video}
-            controls
+            no-controls
             autoPlay
             loop
             muted
