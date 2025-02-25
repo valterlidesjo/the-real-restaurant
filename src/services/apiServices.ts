@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "https://school-restaurant-api.azurewebsites.net";
+const BASE_URL =  import.meta.env.VITE_API_URL;
 
 export const apiServices = {
   get: async (endpoint: string, id: string) => {
