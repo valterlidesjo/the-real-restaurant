@@ -1,6 +1,7 @@
-import { id } from "../components/SearchBookingResults";
 import { Booking } from "../models/Booking";
 import { fetchData } from "./bookingServices";
+
+const id = import.meta.env.VITE_API_ID;
 
 interface CheckAvailableDateProps {
   booking: Booking;

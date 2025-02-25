@@ -1,4 +1,3 @@
-import React from "react";
 import tegelbooking from "../../assets/Group 1.svg";
 
 const TegelBooking = () => {

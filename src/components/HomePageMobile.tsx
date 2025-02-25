@@ -1,9 +1,6 @@
-import React from "react";
 import Hero from "../assets/image 20.svg";
 import Video from "../assets/12855793_3840_2160_30fps.mp4";
 import pizza from "../assets/image 21.svg";
-import mozzarella from "../assets/image 14.svg";
-import { Link } from "react-router";
 import TextSection from "../components/TextSection";
 import { InfiniteTextDataMobile } from "./data/InfiniteTextData";
 import InfiniteSlider from "./UI/InfiniteSlider";

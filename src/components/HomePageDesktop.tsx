@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "../assets/image 20.svg";
 import Video from "../assets/12855793_3840_2160_30fps.mp4";
 import pizza from "../assets/image 21.svg";

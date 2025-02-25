@@ -1,9 +1,8 @@
 import React, { useRef, useState } from "react";
-import "./GuestDetailsForm.scss";
 import { FaChevronLeft } from "react-icons/fa6";
 import { useBookingContext } from "../../Context/BookingsContext";
 import { ActionType } from "../../Reducers/BookingReducer";
-import { fetchData, postData } from "../../services/bookingServices";
+import { postData } from "../../services/bookingServices";
 
 interface GuestDetailsFormProps {
   onBack: () => void;

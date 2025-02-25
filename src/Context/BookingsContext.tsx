@@ -1,8 +1,8 @@
-import { createContext, Dispatch, ReactNode, useContext, useEffect, useReducer } from "react";
+import { createContext, Dispatch, ReactNode, useContext, useReducer } from "react";
 import { Booking } from "../models/Booking";
 import { BookingReducer, IAction } from "../Reducers/BookingReducer";
-import { id } from "../components/SearchBookingResults";
 
+const id = import.meta.env.VITE_API_ID;
 
 interface BookingsContextProps {
     booking: Booking,

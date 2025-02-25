@@ -1,4 +1,3 @@
-import React from "react";
 import { InfiniteText } from "../data/InfiniteTextData";
 import "../scss/_InfiniteSlider.scss";
 

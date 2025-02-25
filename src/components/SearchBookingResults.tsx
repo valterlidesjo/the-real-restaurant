@@ -1,10 +1,9 @@
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import { DateResponse } from "../models/DateResponse";
 import Button from "./UI/Button";
-import { ActionType, IAction } from "../Reducers/BookingReducer";
+import { ActionType } from "../Reducers/BookingReducer";
 import { useBookingContext } from "../Context/BookingsContext";
 
-export const id = "67ac975e21ba0a444fe1f5a8";
 
 interface SearchBookingResultsProps {
   searchedDatesData: DateResponse[];
@@ -16,7 +15,7 @@ const SearchBookingResults = ({
   setSelectedTime
 }: SearchBookingResultsProps) => {
   const [selectedTime, setLocalSelectedTime] = useState<{ date: string; time: string } | null>(null);
-    const { booking, dispatch } = useBookingContext();
+    const { dispatch } = useBookingContext();
   
 
 const handleChosen = (date: string, time: string) => {
@@ -27,7 +26,7 @@ const handleChosen = (date: string, time: string) => {
 
 const handleContinue = () => {
   if (selectedTime) {
-    setSelectedTime(selectedTime); // Update parent state
+    setSelectedTime(selectedTime);
   }
 };
 
